@@ -24,7 +24,7 @@ object NumberProducer {
 }
 
 
-object XorTransformers {
+object EitherTransformers {
   def main(args: Array[String]): Unit = {
 
     val num1TX = NumberProducer.queryNextNumber
@@ -56,7 +56,6 @@ object XorTransformers {
       override def pure[A](x: A): Task[A] = Task.now(x)
     }
 
-    import cats.instances.either._
     val resultTXT = for {
       num1 <- EitherT(num1TX)
       num2 <- EitherT(num2TX)
